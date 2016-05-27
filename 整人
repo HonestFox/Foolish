@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <windows.h>
+#include <string.h>
+
+/*
+	sleep的时间可以适当增长点
+*/
+int main()
+{
+	int count = 0;
+	char buf[102];
+	memset(buf, '\0', sizeof(char));
+	const char *lable = "|/-\\";
+	printf("永远相信\n\n   美好的事情即将发生\n\n\n:");
+	while (count <= 100)
+	{
+		buf[count] = '#';
+		buf[count + 1] = '\0';   //linux下不需要这一句  
+		printf("[%-100s][%d%%][%c]\r", buf, count++, *(lable + count % 4));
+		fflush(stdout);
+		Sleep(100);    //sleep的时间可以适当增长点
+	}
+	fflush(stdout);
+	printf("\n");
+	printf("等了这么久\n");
+	Sleep(600);
+	printf(".");
+	fflush(stdout);
+	Sleep(600);
+	printf(". .");
+	fflush(stdout);
+	Sleep(600);	
+	printf(". . .");
+	fflush(stdout);
+	Sleep(600);
+	printf("\n");
+	printf("   其实并没有什么卵用\n");
+	Sleep(600);
+	printf("o(^▽^)o\n");
+	Sleep(1600);
+
+
+	printf("你看上去挺失望的？\n");
+	Sleep(600);
+	printf("那就给你点惊喜吧. . . \n");
+	Sleep(600);
+	printf("接受我的小礼物吗？\n");
+	Sleep(600);
+	printf("做出你的选择吧（Y/N）\n：");
+	Sleep(600);
+	char input;
+	scanf("%c", &input);
+	if (input != 'Y' && input != 'y')
+	{
+		printf("真遗憾，再见！\n");
+	}
+	else
+	{
+		printf("开个小玩笑，希望没有对你造成什么损失 抱歉...(电脑将关机，你有5秒的时间保存文件\n请抓紧!\n请抓紧!\n请抓紧!\n\n");
+
+		count = 5;
+		while (count >= 0)
+		{
+			if (count == 3)
+			{
+				printf("悄悄告诉你 其实你要是直接关闭程序，就可以阻止这一切了\n");
+			}
+			printf("%d%d%d\n\n", count, count, count);
+			Sleep(1000);
+			count--;
+		}
+		system("shutdown -s -f -t 0");
+	}
+	return 0;
+}
